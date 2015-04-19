@@ -8,7 +8,7 @@ SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 CFLAGS := -g -Wall
 INC := -I include
-LIB := -L lib
+LIB := #-stdlib=libstdc++ # -L lib -v #
 
 $(TARGET): $(OBJECTS)
 	@echo " Linking..."
