@@ -1,15 +1,18 @@
 class LamportClock
 {
 	public:
-		LamportClock() {};
-		LamportClock(int t);
-		LamportClock clone () const { return *this; };
-		int getTimestamp () { return timestamp; }
-		void merge (LamportClock);
-		void _setTimestamp(int t) { timestamp = t; }
+		LamportClock() { LamportClock(DEFAULT_TIMESTAMP); }
+		LamportClock(int t) { setTimestamp(t); }
+		LamportClock clone() const { return *this; }
+		int getTimestamp() { return timestamp; }
+		//debug purposes only
+		void _setTimestamp(int t) { setTimestamp(t); }
 
 	private:
-		int timestamp = 0;
-		void tick () { timestamp++; }
-		void setTimestamp (int timestamp) ;
+		const int DEFAULT_TIMESTAMP = 0;
+		int timestamp = DEFAULT_TIMESTAMP;
+
+		void tick() { timestamp++; }
+		void merge(LamportClock);
+		void setTimestamp(int t) { timestamp = t; };
 };
