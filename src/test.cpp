@@ -13,6 +13,6 @@ int main()
 	lamportA._setTimestamp(50);
 	std::cout << "LamportClockA: " << lamportA.getTimestamp() << std::endl;
 	std::cout << "LamportClockC: " << lamportC.getTimestamp() << std::endl;
-	
+
 	return 0;
 }
